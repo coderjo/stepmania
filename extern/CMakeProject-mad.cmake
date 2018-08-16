@@ -58,12 +58,8 @@ sm_add_compile_definition("mad" HAVE_CONFIG_H)
 
 if(MSVC)
   sm_add_compile_definition("mad" _CRT_SECURE_NO_WARNINGS)
-  # TODO: Remove the need for this check since it's tied to 32-bit builds from first glance.
-  sm_add_compile_definition("mad" ASO_ZEROCHECK)
-  sm_add_compile_definition("mad" $<$<CONFIG:Debug>:FPM_DEFAULT>)
-  sm_add_compile_definition("mad" $<$<CONFIG:Release>:FPM_INTEL>)
-  sm_add_compile_definition("mad" $<$<CONFIG:MinSizeRel>:FPM_INTEL>)
-  sm_add_compile_definition("mad" $<$<CONFIG:RelWithDebInfo>:FPM_INTEL>)
+  # use FPM_64BIT for all builds (it's x64 safe. we can add back in the FPM_INTEL if we can figure out how to get the build target arch.)
+  sm_add_compile_definition("mad" FPM_64BIT)
   # TODO: Provide a proper define for inline.
   sm_add_compile_definition("mad" inline=__inline)
 elseif(APPLE)
