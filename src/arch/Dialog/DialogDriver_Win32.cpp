@@ -29,7 +29,7 @@ static std::string g_sMessage;
 static bool g_bAllowHush;
 
 #if !defined(SMPACKAGE)
-static BOOL CALLBACK OKWndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
+static INT_PTR CALLBACK OKWndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
 	switch( msg )
 	{
@@ -139,7 +139,7 @@ Dialog::Result DialogDriver_Win32::OKCancel( std::string sMessage, std::string s
 #if !defined(SMPACKAGE)
 static std::string g_sErrorString;
 
-static BOOL CALLBACK ErrorWndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
+static INT_PTR CALLBACK ErrorWndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
 	switch( msg )
 	{
@@ -208,7 +208,7 @@ static BOOL CALLBACK ErrorWndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lP
 			}
 
 			// TODO:  Return a different brush if the default is not desired
-			return (BOOL)hbr;
+			return (INT_PTR)hbr;
 		}
 	}
 	return FALSE;
